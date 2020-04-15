@@ -9,8 +9,36 @@
   <br><br>
   <input [(ngModel)]="a" type="text"> *
   <input [(ngModel)]="b" type="text"> 
-  {{a*b}}
+  {{ a  *b}}
 </p>
-<div>
-  {(item.nama)} - {(item.harga)}
+<!-- currency = pipe -->
+<div *ngFor = "let buah of itembuah; let i = index">
+  {{i+1}}. {{buah.nama}} - {{buah.harga | currency : 'Rp'}}
 </div>
+
+<div *ngFor = "let data of itemArr">
+  {{data}}
+</div>
+
+<!-- show itu boolean, kalau true muncul kalau false jadi ilang -->
+<p *ngIf="show">Tampilkan jika nilai show = true</p>
+
+<!-- if else -->
+<ng-template *ngIf ="show; then showBlock; else notShowBlock">
+</ng-template>
+
+<ng-template #showBlock>
+  <p>Show me when true</p>
+</ng-template>
+
+<ng-template #notShowBlock>
+  <p>Show me when false</p>
+</ng-template>
+
+<input [(ngModel)] =user type="text">
+<p *ngIf="user">Halo {{user}}</p>
+
+<p>
+  <button (click) = "klikButton()">Coba ditekan</button>
+  {{pesan}}
+</p>
